@@ -12,10 +12,12 @@ import { createUser } from './services/userAPI';
 
 class App extends React.Component {
   state = {
-    isSaveButtonDisabled: true,
-    username: '',
-    liberado: '',
     loading: false,
+    username: '',
+    isSaveButtonDisabled: true,
+    liberado: '',
+    searchString: '',
+    isSearchButtonDisabled: true,
   };
 
   onInputChange = ({ target }) => {
@@ -27,6 +29,19 @@ class App extends React.Component {
       const USERNAME_MIN_CHAR = 3;
       this.setState({
         isSaveButtonDisabled: (username.length < USERNAME_MIN_CHAR),
+      });
+    });
+  };
+
+  musicSearch = ({ target }) => {
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+    }, () => {
+      const { searchString } = this.state;
+      const SEARCH_MIN_CHAR = 2;
+      this.setState({
+        isSearchButtonDisabled: (searchString.length < SEARCH_MIN_CHAR),
       });
     });
   };
@@ -47,7 +62,9 @@ class App extends React.Component {
   };
 
   render() {
-    const { isSaveButtonDisabled, username, liberado, loading } = this.state;
+    const { isSaveButtonDisabled, username,
+      liberado, loading, isSearchButtonDisabled,
+      searchString } = this.state;
     return (
       <BrowserRouter>
         <Switch>
@@ -60,7 +77,13 @@ class App extends React.Component {
               onJoinButtonClick={ this.onJoinButtonClick }
             />}
           </Route>
-          <Route exact path="/search" component={ Search } />
+          <Route exact path="/search">
+            <Search
+              musicSearch={ this.musicSearch }
+              searchString={ searchString }
+              isSearchButtonDisabled={ isSearchButtonDisabled }
+            />
+          </Route>
           <Route exact path="/album/:id" component={ Album } />
           <Route exact path="/favorites" component={ Favorites } />
           <Route exact path="/profile" component={ Profile } />

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import teste from 'prop-types';
 import Header from './Header';
 
 export default class Search extends Component {
   render() {
+    const { musicSearch, isSearchButtonDisabled, searchString } = this.props;
     return (
       <>
         <Header />
@@ -13,8 +15,21 @@ export default class Search extends Component {
               <input
                 type="text"
                 placeholder="Pesquisar por..."
-                min="1"
+                min="2"
+                name="searchString"
+                data-testid="search-artist-input"
+                value={ searchString }
+                onChange={ musicSearch }
               />
+              <br />
+              <br />
+              <button
+                type="button"
+                data-testid="search-artist-button"
+                disabled={ isSearchButtonDisabled }
+              >
+                Pesquisar
+              </button>
             </center>
           </form>
         </div>
@@ -22,3 +37,7 @@ export default class Search extends Component {
     );
   }
 }
+
+Search.propTypes = {
+  isSearchButtonDisabled: teste.bool,
+}.isRequired;
