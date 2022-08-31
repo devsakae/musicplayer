@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
-import teste from 'prop-types';
+import { getUser } from '../services/userAPI';
+import Loading from './Loading';
 
 export default class Header extends Component {
+  state = {
+    nomelogado: '',
+    loading: true,
+  };
+
+  componentDidMount() {
+    const logado = async () => {
+      const NOME_DE_USUARIO = await getUser();
+      this.setState({
+        nomelogado: NOME_DE_USUARIO.name,
+        loading: false,
+      });
+    };
+    logado();
+  }
+
   render() {
-    const { username } = this.props;
+    const { nomelogado, loading } = this.state;
     return (
-      <header>
+      <header data-testid="header-component">
         <div className="trybetunes" />
-        <div>{`Olá, ${username}`}</div>
+        { loading && <Loading /> }
+        <div>
+          <p>
+            Olá,
+            <span data-testid="header-user-name">{ nomelogado }</span>
+          </p>
+        </div>
       </header>
     );
   }
 }
-
-Header.propTypes = {
-  username: teste.string,
-}.isRequired;

@@ -17,3 +17,10 @@ code {
   display: flex;
   justify-content: center;
 }
+
+.loadscreen {
+  box-sizing: border-box;
+  height: 25px;
+  text-align: center;
+  justify-content: center;
+}

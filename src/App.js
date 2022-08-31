@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Login from './components/Login';
+import Loading from './components/Loading';
 import Search from './components/Search';
 import Album from './components/Album';
 import Favorites from './components/Favorites';
@@ -30,11 +31,16 @@ class App extends React.Component {
     });
   };
 
+  loading = () => {
+    const { loading } = this.state;
+    this.setState({
+      loading: !loading,
+    });
+  };
+
   onJoinButtonClick = async () => {
     const { username } = this.state;
-    this.setState({
-      loading: true,
-    });
+    this.loading();
     createUser({ name: username })
       .then((response) => response === 'OK'
       && this.setState({ liberado: true, loading: false }));
@@ -46,7 +52,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            { loading && <p>Carregando...</p> }
+            { loading && <Loading /> }
             { liberado ? <Redirect to="/search" /> : <Login
               username={ username }
               onInputChange={ this.onInputChange }
