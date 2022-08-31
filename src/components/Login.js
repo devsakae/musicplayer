@@ -2,32 +2,41 @@ import React, { Component } from 'react';
 import teste from 'prop-types';
 
 export default class Login extends Component {
+  state = {
+    loading: false,
+  };
+
   render() {
+    const { loading } = this.state;
     const { username, isSaveButtonDisabled,
       onInputChange, onJoinButtonClick } = this.props;
     return (
       <div align="center" data-testid="page-login">
-        <form>
-          <label htmlFor="username">
-            Digite seu nome para acessar:
+        <form hidden={ loading }>
+          <center>
+            <h1>TrybeTunes, by @devsakae</h1>
+            <label htmlFor="username">
+              <h3>Digite seu nome para acessar:</h3>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                value={ username }
+                onChange={ onInputChange }
+                data-testid="login-name-input"
+              />
+            </label>
             <br />
-            <input
-              id="username"
-              name="username"
-              type="text"
-              value={ username }
-              onChange={ onInputChange }
-              data-testid="login-name-input"
-            />
-          </label>
-          <button
-            type="button"
-            data-testid="login-submit-button"
-            disabled={ isSaveButtonDisabled }
-            onClick={ onJoinButtonClick }
-          >
-            Entrar
-          </button>
+            <br />
+            <button
+              type="button"
+              data-testid="login-submit-button"
+              disabled={ isSaveButtonDisabled }
+              onClick={ onJoinButtonClick }
+            >
+              Entrar
+            </button>
+          </center>
         </form>
       </div>
     );
