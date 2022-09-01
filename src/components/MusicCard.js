@@ -5,7 +5,7 @@ export default class MusicCard extends Component {
   render() {
     const { previewUrl, trackName } = this.props;
     return (
-      <div>
+      <div className="albuns">
         <p>
           { trackName }
         </p>

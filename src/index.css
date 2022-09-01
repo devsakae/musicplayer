@@ -51,6 +51,7 @@ form {
 
 .container {
   display: flex;
+  flex-direction: column;
   width: 90%;
   margin: 0 auto;
   text-align: center;
@@ -73,7 +74,7 @@ form {
 .eachalbum {
   background-color: rgba(230, 230, 230, 0.9);
   box-shadow: 1px 1px 1px black;
-  width: 80%;
+  min-width: 400px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;

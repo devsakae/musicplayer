@@ -21,6 +21,7 @@ class App extends React.Component {
     isSearchButtonDisabled: true,
     searchResults: [],
     bF: false,
+    lastSearch: '',
   };
 
   onInputChange = ({ target }) => {
@@ -54,7 +55,9 @@ class App extends React.Component {
     const { searchString } = this.state;
     const something = await searchAlbumsAPI(searchString);
     this.setState({
+      lastSearch: searchString,
       searchResults: something,
+      searchString: '',
       bF: true,
       loading: false,
     });
@@ -78,7 +81,7 @@ class App extends React.Component {
   render() {
     const { isSaveButtonDisabled, username,
       liberado, loading, isSearchButtonDisabled,
-      searchString, searchResults, bF } = this.state;
+      searchString, searchResults, bF, lastSearch } = this.state;
     return (
       <BrowserRouter>
         <Switch>
@@ -99,6 +102,7 @@ class App extends React.Component {
               searchingFor={ this.searchingFor }
               searchResults={ searchResults }
               bF={ bF }
+              lastSearch={ lastSearch }
             />
           </Route>
           <Route exact path="/album/:id" component={ Album } />

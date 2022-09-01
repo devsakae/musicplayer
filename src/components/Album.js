@@ -14,6 +14,7 @@ export default class Album extends Component {
 
   /* faz o fetch das músicas na montagem do componente, desligando o loading */
   async componentDidMount() {
+    console.log(this.props);
     const { match: { params: { id } } } = this.props;
     const fetchado = await getMusics(id);
     this.setState({
