@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+form {
+  width: 100%;
+}
+
 .loading {
   align-items: center;
   display: flex;
@@ -38,4 +42,40 @@ code {
 .pfl {
   float: right;
   margin-right: 30px;
+}
+
+.search {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.albuns {
+  width: 90%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.eachalbum {
+  background-color: rgba(230, 230, 230, 0.9);
+  box-shadow: 1px 1px 1px black;
+  width: 80%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px;
+}
+
+.eachalbum img {
+  margin-right: 20px;
+  padding: 10px;
+}
+
+.left {
+  text-align: left;
 }

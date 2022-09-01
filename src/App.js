@@ -9,6 +9,7 @@ import Profile from './components/Profile';
 import ProfileEdit from './components/ProfileEdit';
 import NotFound from './components/NotFound';
 import { createUser } from './services/userAPI';
+import searchAlbumsAPI from './services/searchAlbumsAPI';
 
 class App extends React.Component {
   state = {
@@ -18,6 +19,8 @@ class App extends React.Component {
     liberado: '',
     searchString: '',
     isSearchButtonDisabled: true,
+    searchResults: [],
+    bF: false,
   };
 
   onInputChange = ({ target }) => {
@@ -46,6 +49,15 @@ class App extends React.Component {
     });
   };
 
+  searchingFor = async () => {
+    const { searchString } = this.state;
+    const something = await searchAlbumsAPI(searchString);
+    this.setState({
+      searchResults: something,
+      bF: true,
+    });
+  };
+
   loading = () => {
     const { loading } = this.state;
     this.setState({
@@ -64,7 +76,7 @@ class App extends React.Component {
   render() {
     const { isSaveButtonDisabled, username,
       liberado, loading, isSearchButtonDisabled,
-      searchString } = this.state;
+      searchString, searchResults, bF } = this.state;
     return (
       <BrowserRouter>
         <Switch>
@@ -82,6 +94,9 @@ class App extends React.Component {
               musicSearch={ this.musicSearch }
               searchString={ searchString }
               isSearchButtonDisabled={ isSearchButtonDisabled }
+              searchingFor={ this.searchingFor }
+              searchResults={ searchResults }
+              bF={ bF }
             />
           </Route>
           <Route exact path="/album/:id" component={ Album } />
