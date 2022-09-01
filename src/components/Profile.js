@@ -6,7 +6,9 @@ export default class Profile extends Component {
     return (
       <>
         <Header />
-        <div data-testid="page-profile">Profile</div>
+        <div data-testid="page-profile" className="container">
+          <h1>Meu perfil</h1>
+        </div>
       </>
     );
   }

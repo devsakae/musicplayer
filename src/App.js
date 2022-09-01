@@ -50,11 +50,13 @@ class App extends React.Component {
   };
 
   searchingFor = async () => {
+    this.loading();
     const { searchString } = this.state;
     const something = await searchAlbumsAPI(searchString);
     this.setState({
       searchResults: something,
       bF: true,
+      loading: false,
     });
   };
 
@@ -80,8 +82,8 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
+          { loading && <Loading /> }
           <Route exact path="/">
-            { loading && <Loading /> }
             { liberado ? <Redirect to="/search" /> : <Login
               username={ username }
               onInputChange={ this.onInputChange }

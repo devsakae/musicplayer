@@ -10,7 +10,7 @@ export default class Search extends Component {
     return (
       <>
         <Header />
-        <div data-testid="page-search" className="search">
+        <div data-testid="page-search" className="container">
           <form>
             <h1>Busque artistas, músicas ou álbums</h1>
             <input
@@ -21,6 +21,7 @@ export default class Search extends Component {
               value={ searchString }
               onChange={ musicSearch }
             />
+            <br />
             <button
               type="button"
               data-testid="search-artist-button"
@@ -49,7 +50,7 @@ export default class Search extends Component {
                     <br />
                     <br />
                     <a
-                      href={ `/album/:${each.collectionId}` }
+                      href={ `/album/${each.collectionId}` }
                       key={ each.collectionId }
                       data-testid={ `link-to-album-${each.collectionId}` }
                     >
