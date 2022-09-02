@@ -28,6 +28,7 @@ export default class Search extends Component {
                     onChange={ musicSearch }
                   />
                   <br />
+                  <br />
                   <button
                     type="button"
                     data-testid="search-artist-button"

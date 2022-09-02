@@ -17,7 +17,8 @@ form {
 }
 
 .loading {
-  align-items: center;
+  font-size: larger;
+  height: 100%;
   display: flex;
   justify-content: center;
 }

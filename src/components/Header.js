@@ -4,13 +4,11 @@ import { getUser } from '../services/userAPI';
 import Loading from './Loading';
 
 export default class Header extends Component {
-  /* inicializa o componente com username zerado e tela de loading até carregar */
   state = {
     nomelogado: '',
     loading: true,
   };
 
-  /* usa o getUser() pra salvar o nome no localhost e desliga o loading na montagem */
   componentDidMount() {
     const logado = async () => {
       const NOME_DE_USUARIO = await getUser();
@@ -20,6 +18,11 @@ export default class Header extends Component {
       });
     };
     logado();
+  }
+
+  shouldComponentUpdate() {
+    const { nomelogado } = this.state;
+    return (nomelogado.length < 1);
   }
 
   render() {

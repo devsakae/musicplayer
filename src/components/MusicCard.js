@@ -10,8 +10,9 @@ export default class MusicCard extends Component {
         <div className="songPiece">
           <h3>{ trackName }</h3>
           <form>
-            <label htmlFor={ `checkbox-music-${trackId}` }>
+            <label htmlFor={ trackId }>
               <input
+                id={ trackId }
                 type="checkbox"
                 name={ trackId }
                 defaultChecked={ listaDeFavoritas.length > 0
