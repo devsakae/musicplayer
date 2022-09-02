@@ -6,14 +6,12 @@ import Loading from './Loading';
 import MusicCard from './MusicCard';
 import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
-const todasFavs = [];
-
 export default class Album extends Component {
   /* inicializa o state com o loading verdadeiro e soa (songs of album) em branco; */
   state = {
     loading: true,
     soa: '',
-    favoritas: [],
+    listaDeFavoritas: [],
   };
 
   /* faz o fetch das músicas na montagem do componente, desligando o loading */
@@ -21,14 +19,13 @@ export default class Album extends Component {
     const getEm = async () => {
       const { match: { params: { id } } } = this.props;
       const fetchado = await getMusics(id);
+      await this.favoritada();
       this.setState({
         soa: fetchado,
         loading: false,
-        listaDeFavoritas: [],
       });
     };
     getEm();
-    this.favoritada();
   }
 
   favTheSong = async (obj) => {
