@@ -3,19 +3,35 @@ import teste from 'prop-types';
 
 export default class MusicCard extends Component {
   render() {
-    const { previewUrl, trackName } = this.props;
+    const { previewUrl, trackName, trackId,
+      listaDeFavoritas, objDaMusica, favTheSong } = this.props;
     return (
-      <div className="albuns">
-        <p>
-          { trackName }
-        </p>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
-          <track kind="captions" />
-          O seu navegador não suporta o elemento
-          { ' ' }
-          <code>audio</code>
-          .
-        </audio>
+      <div className="songs">
+        <div className="songPiece">
+          <h3>{ trackName }</h3>
+          <form>
+            <label htmlFor={ `checkbox-music-${trackId}` }>
+              <input
+                type="checkbox"
+                name={ trackId }
+                defaultChecked={ listaDeFavoritas.length > 0
+                  && (listaDeFavoritas.some((e) => e.trackId === objDaMusica.trackId)) }
+                onClick={ () => favTheSong(objDaMusica) }
+                data-testid={ `checkbox-music-${trackId}` }
+              />
+              Adicionar às favoritas
+            </label>
+          </form>
+        </div>
+        <div className="songPiece">
+          <audio data-testid="audio-component" src={ previewUrl } controls>
+            <track kind="captions" />
+            O seu navegador não suporta o elemento
+            { ' ' }
+            <code>audio</code>
+            .
+          </audio>
+        </div>
       </div>
     );
   }

@@ -90,3 +90,14 @@ form {
 .left {
   text-align: left;
 }
+
+.songs {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 20px;
+}
+
+.songPiece {
+  background-color: rgba(230, 230, 230, 0.9);
+  padding: 10px;
+}

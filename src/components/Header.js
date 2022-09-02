@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
+import Loading from './Loading';
 
 export default class Header extends Component {
   /* inicializa o componente com username zerado e tela de loading até carregar */
@@ -25,18 +26,40 @@ export default class Header extends Component {
     const { nomelogado, loading } = this.state;
     return (
       <header data-testid="header-component">
-        <div className="trybetunes">
-          <ul className="menu">
-            <li><Link to="/search" data-testid="link-to-search">🔍 Busca</Link></li>
-            <li><Link to="/favorites" data-testid="link-to-favorites">💖 Favs</Link></li>
-            <li><Link to="/profile" data-testid="link-to-profile">👤 Meu perfil</Link></li>
-          </ul>
-          {/* Esconde o nome do username caso ainda esteja carregando */}
-          { loading && 'Carregando perfil...' }
-          <span data-testid="header-user-name" hidden={ loading }>
-            { nomelogado }
-          </span>
-        </div>
+        { loading ? <Loading />
+          : (
+            <div className="trybetunes">
+              <ul className="menu">
+                <li>
+                  <Link
+                    to="/search"
+                    data-testid="link-to-search"
+                  >
+                    🔍 Busca
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/favorites"
+                    data-testid="link-to-favorites"
+                  >
+                    💖 Favoritos
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/profile"
+                    data-testid="link-to-profile"
+                  >
+                    👤 Meu perfil
+                  </Link>
+                </li>
+              </ul>
+              <span data-testid="header-user-name" hidden={ loading }>
+                { nomelogado }
+              </span>
+            </div>
+          ) }
       </header>
     );
   }

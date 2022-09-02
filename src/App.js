@@ -22,6 +22,7 @@ class App extends React.Component {
     searchResults: [],
     bF: false,
     lastSearch: '',
+    favSongs: [],
   };
 
   onInputChange = ({ target }) => {
@@ -79,7 +80,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { isSaveButtonDisabled, username,
+    const { isSaveButtonDisabled, username, favSongs,
       liberado, loading, isSearchButtonDisabled,
       searchString, searchResults, bF, lastSearch } = this.state;
     return (
@@ -106,7 +107,11 @@ class App extends React.Component {
             />
           </Route>
           <Route exact path="/album/:id" component={ Album } />
-          <Route exact path="/favorites" component={ Favorites } />
+          <Route exact path="/favorites">
+            <Favorites
+              favSongs={ favSongs }
+            />
+          </Route>
           <Route exact path="/profile" component={ Profile } />
           <Route exact path="/profile/edit" component={ ProfileEdit } />
           <Route path="*" component={ NotFound } />

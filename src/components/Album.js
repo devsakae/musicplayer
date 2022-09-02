@@ -4,33 +4,59 @@ import Header from './Header';
 import getMusics from '../services/musicsAPI';
 import Loading from './Loading';
 import MusicCard from './MusicCard';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+
+const todasFavs = [];
 
 export default class Album extends Component {
   /* inicializa o state com o loading verdadeiro e soa (songs of album) em branco; */
   state = {
     loading: true,
     soa: '',
+    favoritas: [],
   };
 
   /* faz o fetch das músicas na montagem do componente, desligando o loading */
-  async componentDidMount() {
-    console.log(this.props);
-    const { match: { params: { id } } } = this.props;
-    const fetchado = await getMusics(id);
-    this.setState({
-      soa: fetchado,
-      loading: false,
-    });
+  componentDidMount() {
+    const getEm = async () => {
+      const { match: { params: { id } } } = this.props;
+      const fetchado = await getMusics(id);
+      this.setState({
+        soa: fetchado,
+        loading: false,
+        listaDeFavoritas: [],
+      });
+    };
+    getEm();
+    this.favoritada();
   }
 
+  favTheSong = async (obj) => {
+    this.setState({
+      loading: true,
+    });
+    await addSong(obj);
+    await this.favoritada();
+    this.setState({
+      loading: false,
+    });
+  };
+
+  favoritada = async () => {
+    const algo = await getFavoriteSongs();
+    this.setState({
+      listaDeFavoritas: algo,
+    });
+  };
+
   render() {
-    const { soa, loading } = this.state;
+    const { soa, loading, listaDeFavoritas } = this.state;
     return (
       <>
         <Header />
         { loading ? <Loading />
           : (
-            <div data-testid="page-album" className="container" hidden={ loading }>
+            <div data-testid="page-album" className="container">
               <h1
                 data-testid="artist-name"
                 key={ soa[0].artistId }
@@ -47,8 +73,13 @@ export default class Album extends Component {
                 { soa.map((cada, index) => (index > 0) && (
                   <MusicCard
                     key={ index }
+                    objDaMusica={ cada }
                     previewUrl={ cada.previewUrl }
                     trackName={ cada.trackName }
+                    trackId={ cada.trackId }
+                    favoritada={ this.favoritada }
+                    favTheSong={ this.favTheSong }
+                    listaDeFavoritas={ listaDeFavoritas }
                   />
                 )) }
               </div>
