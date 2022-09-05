@@ -21,12 +21,13 @@ export default class Login extends Component {
                 id="username"
                 name="username"
                 type="text"
+                placeholder="Digite seu nome..."
                 value={ username }
                 onChange={ onInputChange }
                 data-testid="login-name-input"
+                className="searchField"
               />
             </label>
-            <br />
             <br />
             <button
               type="button"

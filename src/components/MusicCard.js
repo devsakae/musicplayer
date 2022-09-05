@@ -7,9 +7,9 @@ export default class MusicCard extends Component {
       listaDeFavoritas, objDaMusica, favTheSong } = this.props;
     return (
       <div className="songs">
-        <div className="songPiece">
-          <h3>{ trackName }</h3>
+        <div className="songInfo">
           <form>
+            <h3>{ trackName }</h3>
             <label htmlFor={ trackId }>
               <input
                 id={ trackId }
@@ -20,11 +20,11 @@ export default class MusicCard extends Component {
                 onClick={ (ev) => { favTheSong(ev, objDaMusica); } }
                 data-testid={ `checkbox-music-${trackId}` }
               />
-              Adicionar às favoritas
+              Favorita
             </label>
           </form>
         </div>
-        <div className="songPiece">
+        <div className="songAudio">
           <audio data-testid="audio-component" src={ previewUrl } controls>
             <track kind="captions" />
             O seu navegador não suporta o elemento

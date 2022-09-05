@@ -48,20 +48,23 @@ export default class Album extends Component {
       <div>
         { loading ? <Loading />
           : (
-            <div data-testid="page-album" className="container">
-              <h1
-                data-testid="artist-name"
-                key={ soa[0].artistId }
-              >
-                { soa[0].artistName }
-              </h1>
-              <h2
-                data-testid="album-name"
-                key={ soa[0].collectionId }
-              >
-                { soa[0].collectionName }
-              </h2>
-              <div className="albuns">
+            <div data-testid="page-album" className="container2">
+              <div className="albuminfo">
+                <h1
+                  data-testid="artist-name"
+                  key={ soa[0].artistId }
+                >
+                  { soa[0].artistName }
+                </h1>
+                <img src={ soa[0].artworkUrl100 } alt={ soa[0].artistName } />
+                <h3
+                  data-testid="album-name"
+                  key={ soa[0].collectionId }
+                >
+                  { soa[0].collectionName }
+                </h3>
+              </div>
+              <div className="container">
                 { soa.map((cada, index) => (index > 0) && (
                   <MusicCard
                     key={ index }

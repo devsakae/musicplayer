@@ -14,6 +14,31 @@ code {
 
 form {
   width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchField {
+  height: 30px;
+  width: 350px;
+}
+
+button {
+  width: 180px;
+  height: 60px;
+  margin: 20px;
+  line-height: 60px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  color: black;
+  transition: 0.1s;
+  border: 1px solid black;
+}
+button:hover {
+    border: 1px solid gray;
+    background: yellow;
 }
 
 .loading {
@@ -56,6 +81,33 @@ form {
   text-align: center;
 }
 
+.container img {
+  max-width: 100px;
+}
+
+.albuminfo {
+  display: flex;
+  text-align: center;
+  width: 23%;
+  flex-direction: column;
+  padding: 10px;
+  margin-right: 20px;
+  align-items: center;
+}
+
+.container2 {
+  display: flex;
+  flex-wrap: row nowrap;
+  width: 89%;
+  margin: 0 auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.container2 img {
+  max-width: 100px;
+}
+
 .albuns {
   width: 90%;
   display: flex;
@@ -87,11 +139,27 @@ form {
 
 .songs {
   display: flex;
-  flex-flow: column wrap;
-  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px grey solid;
 }
 
-.songPiece {
-  background-color: rgba(230, 230, 230, 0.9);
-  padding: 10px;
+.songInfo {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding: 1px;
+}
+
+.songInfo h3 {
+  margin-bottom: 5px;
+}
+
+.songInfo form {
+  margin-bottom: 15px;
+}
+
+.songAudio {
+  display: flex;
 }

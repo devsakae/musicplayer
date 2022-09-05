@@ -18,13 +18,13 @@ export default class Search extends Component {
                 <h1>Busque artistas, músicas ou álbums</h1>
                 <input
                   type="text"
-                  placeholder="Pesquisar por..."
+                  placeholder="Pesquise por nome do artista"
                   name="searchString"
                   data-testid="search-artist-input"
                   value={ searchString }
                   onChange={ musicSearch }
+                  className="searchField"
                 />
-                <br />
                 <br />
                 <button
                   type="button"
