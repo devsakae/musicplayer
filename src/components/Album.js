@@ -33,7 +33,8 @@ export default class Album extends Component {
     this.setState({
       loading: true,
     });
-    (checked === false) ? await removeSong(obj) : await addSong(obj);
+    if (checked) await addSong(obj);
+    else await removeSong(obj);
     const gfs = await getFavoriteSongs();
     this.setState({
       loading: false,
