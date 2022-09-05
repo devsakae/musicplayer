@@ -23,13 +23,6 @@ form {
   justify-content: center;
 }
 
-.loadscreen {
-  box-sizing: border-box;
-  height: 25px;
-  text-align: center;
-  justify-content: center;
-}
-
 .trybetunes {
   display: flex;
   justify-content: space-between;

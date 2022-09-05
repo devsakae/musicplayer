@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import teste from 'prop-types';
-import Header from './Header';
 import getMusics from '../services/musicsAPI';
 import Loading from './Loading';
 import MusicCard from './MusicCard';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 export default class Album extends Component {
   /* inicializa o state com o loading verdadeiro e soa (songs of album) em branco; */
@@ -19,8 +18,9 @@ export default class Album extends Component {
     const getEm = async () => {
       const { match: { params: { id } } } = this.props;
       const fetchado = await getMusics(id);
-      await this.favoritada();
+      const algo = await getFavoriteSongs();
       this.setState({
+        listaDeFavoritas: algo,
         soa: fetchado,
         loading: false,
       });
@@ -28,29 +28,23 @@ export default class Album extends Component {
     getEm();
   }
 
-  favTheSong = async (obj) => {
+  favTheSong = async (ev, obj) => {
+    const { target: { checked } } = ev;
     this.setState({
       loading: true,
     });
-    await addSong(obj);
-    await this.favoritada();
+    (checked === false) ? await removeSong(obj) : await addSong(obj);
+    const gfs = await getFavoriteSongs();
     this.setState({
       loading: false,
-    });
-  };
-
-  favoritada = async () => {
-    const algo = await getFavoriteSongs();
-    this.setState({
-      listaDeFavoritas: algo,
+      listaDeFavoritas: gfs,
     });
   };
 
   render() {
     const { soa, loading, listaDeFavoritas } = this.state;
     return (
-      <>
-        <Header />
+      <div>
         { loading ? <Loading />
           : (
             <div data-testid="page-album" className="container">
@@ -74,7 +68,6 @@ export default class Album extends Component {
                     previewUrl={ cada.previewUrl }
                     trackName={ cada.trackName }
                     trackId={ cada.trackId }
-                    favoritada={ this.favoritada }
                     favTheSong={ this.favTheSong }
                     listaDeFavoritas={ listaDeFavoritas }
                   />
@@ -82,7 +75,7 @@ export default class Album extends Component {
               </div>
             </div>
           )}
-      </>
+      </div>
     );
   }
 }

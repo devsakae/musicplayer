@@ -17,7 +17,7 @@ export default class MusicCard extends Component {
                 name={ trackId }
                 defaultChecked={ listaDeFavoritas.length > 0
                   && (listaDeFavoritas.some((e) => e.trackId === objDaMusica.trackId)) }
-                onClick={ () => favTheSong(objDaMusica) }
+                onClick={ (ev) => { favTheSong(ev, objDaMusica); } }
                 data-testid={ `checkbox-music-${trackId}` }
               />
               Adicionar às favoritas

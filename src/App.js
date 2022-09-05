@@ -10,6 +10,7 @@ import ProfileEdit from './components/ProfileEdit';
 import NotFound from './components/NotFound';
 import { createUser } from './services/userAPI';
 import searchAlbumsAPI from './services/searchAlbumsAPI';
+import Header from './components/Header';
 
 class App extends React.Component {
   state = {
@@ -85,10 +86,12 @@ class App extends React.Component {
       searchString, searchResults, bF, lastSearch } = this.state;
     return (
       <BrowserRouter>
+        <Header />
         <Switch>
           { loading && <Loading /> }
           <Route exact path="/">
             { liberado ? <Redirect to="/search" /> : <Login
+              { ...this.props }
               username={ username }
               onInputChange={ this.onInputChange }
               isSaveButtonDisabled={ isSaveButtonDisabled }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from './Header';
 import Loading from './Loading';
 
 export default class Favorites extends Component {
@@ -16,15 +15,14 @@ export default class Favorites extends Component {
   render() {
     const { loading } = this.state;
     return (
-      <>
-        <Header />
+      <div>
         { loading ? <Loading />
           : (
             <div data-testid="page-favorites" className="container">
               <h1>Favoritas</h1>
             </div>
           ) }
-      </>
+      </div>
     );
   }
 }
