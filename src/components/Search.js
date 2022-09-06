@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import teste from 'prop-types';
 import Loading from './Loading';
-import '../index.css';
+import Header from './Header';
 
 export default class Search extends Component {
   render() {
@@ -10,10 +10,11 @@ export default class Search extends Component {
       searchString, searchingFor, searchResults,
       loading, lastSearch } = this.props;
     return (
-      <div data-testid="page-search" className="container">
+      <div>
+        <Header />
         { loading ? <Loading />
           : (
-            <div>
+            <div data-testid="page-search" className="container">
               <form>
                 <h1>Busque artistas, músicas ou álbums</h1>
                 <input

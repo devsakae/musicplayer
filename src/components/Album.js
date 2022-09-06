@@ -3,6 +3,7 @@ import teste from 'prop-types';
 import getMusics from '../services/musicsAPI';
 import Loading from './Loading';
 import MusicCard from './MusicCard';
+import Header from './Header';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 export default class Album extends Component {
@@ -46,6 +47,7 @@ export default class Album extends Component {
     const { soa, loading, listaDeFavoritas } = this.state;
     return (
       <div>
+        <Header />
         { loading ? <Loading />
           : (
             <div data-testid="page-album" className="container2">

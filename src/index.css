@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Sniglet', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -142,18 +142,24 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px grey solid;
+  padding: 10px;
+}
+
+.songs form {
+  max-width: 50px;
+  font-size: x-small;
 }
 
 .songInfo {
   width: 100%;
   text-align: left;
   display: flex;
-  align-items: center;
+  flex-flow: column;
   padding: 1px;
 }
 
 .songInfo h3 {
-  margin-bottom: 5px;
+  margin: 0;
 }
 
 .songInfo form {
@@ -162,4 +168,8 @@ button:hover {
 
 .songAudio {
   display: flex;
+}
+
+.fav {
+  width: 10%;
 }

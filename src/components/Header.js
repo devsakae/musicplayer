@@ -24,7 +24,6 @@ export default class Header extends Component {
     const { nomelogado, loading } = this.state;
     return (
       <header data-testid="header-component">
-        { loading && <Loading /> }
         <div className="trybetunes">
           <ul className="menu">
             <li>
@@ -53,7 +52,7 @@ export default class Header extends Component {
             </li>
           </ul>
           <span data-testid="header-user-name">
-            { nomelogado }
+            { loading ? <Loading /> : nomelogado }
           </span>
         </div>
       </header>

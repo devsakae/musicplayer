@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Loading from './Loading';
 import MusicCard from './MusicCard';
+import Header from './Header';
 import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 export default class Favorites extends Component {
@@ -36,12 +37,13 @@ export default class Favorites extends Component {
     const { loading, myFavSongs } = this.state;
     return (
       <div>
+        <Header />
         { loading ? <Loading />
           : (
             <div data-testid="page-favorites" className="container">
               <h1>Favoritas</h1>
               <div className="container">
-                { myFavSongs.map((cada, index) => (index > 0) && (
+                { myFavSongs.map((cada, index) => (
                   <MusicCard
                     key={ index }
                     objDaMusica={ cada }
@@ -50,6 +52,7 @@ export default class Favorites extends Component {
                     trackId={ cada.trackId }
                     listaDeFavoritas={ myFavSongs }
                     favTheSong={ this.favTheSong }
+                    mostrArtista="true"
                   />
                 )) }
               </div>
