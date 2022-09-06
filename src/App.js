@@ -114,7 +114,9 @@ class App extends React.Component {
             />
           </Route>
           <Route exact path="/profile" component={ Profile } />
-          <Route exact path="/profile/edit" component={ ProfileEdit } />
+          <Route exact path="/profile/edit">
+            <ProfileEdit />
+          </Route>
           <Route path="*" component={ NotFound } />
         </Switch>
       </BrowserRouter>
