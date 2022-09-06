@@ -36,16 +36,12 @@ export default class Profile extends Component {
               </center>
               <div className="container">
                 <div>
-                  Nome:
-                  { ' ' }
                   { name }
                 </div>
                 <div>
                   { description }
                 </div>
                 <div>
-                  E-mail:
-                  { ' ' }
                   { email }
                 </div>
               </div>
