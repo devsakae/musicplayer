@@ -27,22 +27,24 @@ export default class Search extends Component {
                   className="searchField"
                 />
                 <br />
+                <br />
                 <button
                   type="button"
                   data-testid="search-artist-button"
                   disabled={ isSearchButtonDisabled }
                   onClick={ searchingFor }
+                  className="css-button-3d--sky"
                 >
                   Pesquisar
                 </button>
               </form>
             </div>
           )}
-        <h2>
+        <h1>
           { (searchResults.length === 0 && bF) && 'Nenhum álbum foi encontrado' }
           { (searchResults.length >= 1 && bF)
           && `Resultado de álbuns de: ${lastSearch}` }
-        </h2>
+        </h1>
         <div className="albuns">
           { searchResults.map((each) => (
             <Link

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Loading from './Loading';
 import MusicCard from './MusicCard';
 import Header from './Header';
-import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 export default class Favorites extends Component {
   state = {
@@ -21,20 +21,9 @@ export default class Favorites extends Component {
     getEm();
   }
 
-  favTheSong = async (ev, obj) => {
-    this.setState({
-      loading: true,
-    });
-    await removeSong(obj);
-    const gfs = await getFavoriteSongs();
-    this.setState({
-      loading: false,
-      myFavSongs: gfs,
-    });
-  };
-
   render() {
     const { loading, myFavSongs } = this.state;
+    const sayittrue = true;
     return (
       <div>
         <Header />
@@ -50,9 +39,7 @@ export default class Favorites extends Component {
                     previewUrl={ cada.previewUrl }
                     trackName={ cada.trackName }
                     trackId={ cada.trackId }
-                    listaDeFavoritas={ myFavSongs }
-                    favTheSong={ this.favTheSong }
-                    mostrArtista="true"
+                    mostrArtista={ sayittrue }
                   />
                 )) }
               </div>

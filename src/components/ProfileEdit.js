@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import teste from 'prop-types';
 import Header from './Header';
 import Loading from './Loading';
-import { getUser } from '../services/userAPI';
+import { getUser, updateUser } from '../services/userAPI';
 
 export default class ProfileEdit extends Component {
   state = {
     loading: true,
-    userData: {},
+    name: '',
+    email: '',
+    description: '',
+    image: '',
   };
 
   componentDidMount() {
@@ -15,7 +18,10 @@ export default class ProfileEdit extends Component {
       const { name, email, description, image } = await getUser();
       this.setState({
         loading: false,
-        userData: { name, email, description, image },
+        name,
+        email,
+        description,
+        image,
         isSaveButtonDisabled: true,
       });
     };
@@ -34,9 +40,18 @@ export default class ProfileEdit extends Component {
     });
   };
 
+  atualizaDados = async (obj) => {
+    this.setState({
+      loading: true,
+    });
+    await updateUser(obj);
+    this.setState({
+      loading: false,
+    });
+  };
+
   render() {
-    const { loading, isSaveButtonDisabled,
-      userData: { name, email, description, image } } = this.state;
+    const { loading, isSaveButtonDisabled, name, email, description, image } = this.state;
     return (
       <div>
         <Header />
@@ -52,7 +67,7 @@ export default class ProfileEdit extends Component {
             <form>
               <input
                 id="edit-input-name"
-                name="edit-input-name"
+                name="name"
                 type="text"
                 data-testid="edit-input-name"
                 placeholder={ name }
@@ -63,7 +78,7 @@ export default class ProfileEdit extends Component {
               <br />
               <input
                 id="edit-input-email"
-                name="edit-input-email"
+                name="email"
                 type="email"
                 data-testid="edit-input-email"
                 placeholder="Endereço de e-mail"
@@ -74,7 +89,7 @@ export default class ProfileEdit extends Component {
               <br />
               <input
                 id="edit-input-image"
-                name="edit-input-image"
+                name="image"
                 type="text"
                 data-testid="edit-input-image"
                 placeholder="URL para sua imagem"
@@ -83,9 +98,10 @@ export default class ProfileEdit extends Component {
                 required
               />
               <br />
-              <textarea
+              <input
                 id="edit-input-description"
-                name="edit-input-description"
+                type="text"
+                name="description"
                 placeholder="Algo sobre você, algo bonito."
                 value={ description }
                 onChange={ this.onInputChange }
@@ -97,6 +113,7 @@ export default class ProfileEdit extends Component {
                 name="edit-button-save"
                 data-testid="edit-button-save"
                 disabled={ isSaveButtonDisabled }
+                onClick={ () => this.atualizaDados({ name, email, description, image }) }
               >
                 Salvar
               </button>

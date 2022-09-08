@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import teste from 'prop-types';
-import getMusics from '../services/musicsAPI';
 import Loading from './Loading';
 import MusicCard from './MusicCard';
 import Header from './Header';
-import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import getMusics from '../services/musicsAPI';
 
 export default class Album extends Component {
   /* inicializa o state com o loading verdadeiro e soa (songs of album) em branco; */
   state = {
     loading: true,
     soa: '',
-    listaDeFavoritas: [],
   };
 
   /* faz o fetch das músicas na montagem do componente, desligando o loading */
@@ -19,9 +17,7 @@ export default class Album extends Component {
     const getEm = async () => {
       const { match: { params: { id } } } = this.props;
       const fetchado = await getMusics(id);
-      const algo = await getFavoriteSongs();
       this.setState({
-        listaDeFavoritas: algo,
         soa: fetchado,
         loading: false,
       });
@@ -29,22 +25,8 @@ export default class Album extends Component {
     getEm();
   }
 
-  favTheSong = async (ev, obj) => {
-    const { target: { checked } } = ev;
-    this.setState({
-      loading: true,
-    });
-    if (checked) await addSong(obj);
-    else await removeSong(obj);
-    const gfs = await getFavoriteSongs();
-    this.setState({
-      loading: false,
-      listaDeFavoritas: gfs,
-    });
-  };
-
   render() {
-    const { soa, loading, listaDeFavoritas } = this.state;
+    const { soa, loading } = this.state;
     return (
       <div>
         <Header />
@@ -74,8 +56,6 @@ export default class Album extends Component {
                     previewUrl={ cada.previewUrl }
                     trackName={ cada.trackName }
                     trackId={ cada.trackId }
-                    favTheSong={ this.favTheSong }
-                    listaDeFavoritas={ listaDeFavoritas }
                   />
                 )) }
               </div>

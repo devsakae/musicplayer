@@ -22,6 +22,7 @@ export default class Header extends Component {
 
   render() {
     const { nomelogado, loading } = this.state;
+    const sayittrue = true;
     return (
       <header data-testid="header-component">
         <div className="trybetunes">
@@ -52,7 +53,7 @@ export default class Header extends Component {
             </li>
           </ul>
           <span data-testid="header-user-name">
-            { loading ? <Loading /> : nomelogado }
+            { loading ? <Loading notext={ sayittrue } /> : nomelogado }
           </span>
         </div>
       </header>

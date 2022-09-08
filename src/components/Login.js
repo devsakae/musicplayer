@@ -29,11 +29,13 @@ export default class Login extends Component {
               />
             </label>
             <br />
+            <br />
             <button
               type="button"
               data-testid="login-submit-button"
               disabled={ isSaveButtonDisabled }
               onClick={ onJoinButtonClick }
+              className="css-button-3d--sky"
             >
               Entrar
             </button>
