@@ -1,18 +1,19 @@
 .loading {
+  align-items: flex-start;
   display: flex;
   height: 30%;
-  align-items: flex-start;
   justify-content: center;
 }
 
 @keyframes arrows {
-  0%,
-  100% {
+
+  0%, 100% {
     color: black;
     transform: translateY(0);
   }
+
   50% {
-    color: #3AB493;
+    color: #3ab493;
     transform: translateY(20px);
   }
 }
@@ -26,11 +27,13 @@
 }
 
 .loadspan1 {
+
   --delay: 0s;
   animation: arrows 1s 0.2s infinite ease-in;
 }
 
 .loadspan2 {
+
   --delay: 0s;
   animation: arrows 1s 0.4s infinite ease-in;
 }
