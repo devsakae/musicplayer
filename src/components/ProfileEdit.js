@@ -56,69 +56,72 @@ export default class ProfileEdit extends Component {
       <div>
         <Header />
         <div data-testid="page-profile-edit">
-          { loading && <Loading /> }
-          <center>
-            <p>
-              Bem vindo@,
-              { ' ' }
-              { name }
-              .
-            </p>
-            <form>
-              <input
-                id="edit-input-name"
-                name="name"
-                type="text"
-                data-testid="edit-input-name"
-                placeholder={ name }
-                value={ name }
-                onChange={ this.onInputChange }
-                required
-              />
-              <br />
-              <input
-                id="edit-input-email"
-                name="email"
-                type="email"
-                data-testid="edit-input-email"
-                placeholder="Endereço de e-mail"
-                value={ email }
-                onChange={ this.onInputChange }
-                required
-              />
-              <br />
-              <input
-                id="edit-input-image"
-                name="image"
-                type="text"
-                data-testid="edit-input-image"
-                placeholder="URL para sua imagem"
-                onChange={ this.onInputChange }
-                value={ image }
-                required
-              />
-              <br />
-              <input
-                id="edit-input-description"
-                type="text"
-                name="description"
-                placeholder="Algo sobre você, algo bonito."
-                value={ description }
-                onChange={ this.onInputChange }
-                required
-              />
-              <br />
-              <button
-                type="button"
-                name="edit-button-save"
-                data-testid="edit-button-save"
-                disabled={ isSaveButtonDisabled }
-                onClick={ () => this.atualizaDados({ name, email, description, image }) }
-              >
-                Salvar
-              </button>
-            </form>
-          </center>
+          { loading ? <Loading /> : (
+            <center>
+              <h2>
+                Bem vind@,
+                { ' ' }
+                { name }
+                .
+              </h2>
+              <form>
+                <input
+                  id="edit-input-name"
+                  name="name"
+                  type="text"
+                  data-testid="edit-input-name"
+                  placeholder={ name }
+                  value={ name }
+                  onChange={ this.onInputChange }
+                  required
+                />
+                <br />
+                <input
+                  id="edit-input-email"
+                  name="email"
+                  type="email"
+                  data-testid="edit-input-email"
+                  placeholder="Endereço de e-mail"
+                  value={ email }
+                  onChange={ this.onInputChange }
+                  required
+                />
+                <br />
+                <input
+                  id="edit-input-image"
+                  name="image"
+                  type="text"
+                  data-testid="edit-input-image"
+                  placeholder="URL para sua imagem"
+                  onChange={ this.onInputChange }
+                  value={ image }
+                  required
+                />
+                <br />
+                <input
+                  id="edit-input-description"
+                  type="text"
+                  name="description"
+                  placeholder="Algo sobre você, algo bonito."
+                  value={ description }
+                  onChange={ this.onInputChange }
+                  required
+                />
+                <br />
+                <button
+                  type="button"
+                  name="edit-button-save"
+                  data-testid="edit-button-save"
+                  disabled={ isSaveButtonDisabled }
+                  onClick={ () => this.atualizaDados({
+                    name, email, description, image }) }
+                >
+                  Salvar
+                </button>
+              </form>
+            </center>
+
+          )}
         </div>
       </div>
     );

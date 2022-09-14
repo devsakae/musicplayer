@@ -35,14 +35,17 @@ export default class Profile extends Component {
                 <img src={ image } alt={ name } data-testid="profile-image" />
               </center>
               <div className="container">
-                <div>
-                  { name }
+                <div className="container-row botaborda">
+                  <div>Seu nome:</div>
+                  <div>{ name }</div>
                 </div>
-                <div>
-                  { description }
+                <div className="container-row botaborda">
+                  <div>E-mail:</div>
+                  <div>{ email }</div>
                 </div>
-                <div>
-                  { email }
+                <div className="container-row botaborda">
+                  <div>Descrição:</div>
+                  <div>{ description }</div>
                 </div>
               </div>
             </div>

@@ -15,7 +15,6 @@ code {
 form {
   align-items: center;
   justify-content: center;
-  width: 100%;
 }
 
 h1 {
@@ -85,7 +84,19 @@ h1 {
   justify-content: center;
   margin: 0 auto;
   text-align: center;
-  width: 90%;
+  width: 100vw;
+}
+
+.botaborda {
+  border-bottom: 1px grey solid;
+  margin-top: 20px;
+}
+
+.container-row {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .container h1 {
