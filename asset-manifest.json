@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/musicplayer/static/css/main.00cd9671.css",
+    "main.js": "/musicplayer/static/js/main.028ff285.js",
+    "static/media/partitura-background.jpg": "/musicplayer/static/media/partitura-background.f0756ea33a88552104b3.jpg",
+    "index.html": "/musicplayer/index.html",
+    "main.00cd9671.css.map": "/musicplayer/static/css/main.00cd9671.css.map",
+    "main.028ff285.js.map": "/musicplayer/static/js/main.028ff285.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.00cd9671.css",
+    "static/js/main.028ff285.js"
+  ]
+}
