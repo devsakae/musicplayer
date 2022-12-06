@@ -24,7 +24,7 @@ export default class Header extends Component {
     const { nomelogado, loading } = this.state;
     const sayittrue = true;
     return (
-      <header data-testid="header-component">
+      <header>
         <div className="trybetunes">
           <ul className="menu">
             <li>

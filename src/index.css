@@ -5,6 +5,8 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url('../public/partitura-background.jpg');
+  background-attachment: fixed;
 }
 
 code {
@@ -59,9 +61,12 @@ h1 {
 }
 
 .trybetunes {
-  background-color:darkslategray;
+  align-items: center;
+  background: rgb(47,79,79);
+  background: linear-gradient(90deg, rgba(47,79,79,1) 0%, rgba(36,36,54,1) 35%, rgba(68,153,98,1) 100%);
   color: white;
   display: flex;
+  height: 12vh;
   justify-content: space-between;
   padding: 20px;
 }
@@ -76,6 +81,11 @@ h1 {
   display: inline;
   padding: 20px;
   text-decoration: none;
+}
+
+.trybetunes li:hover {
+  color: aquamarine;
+  font-weight: bold;
 }
 
 .container {
