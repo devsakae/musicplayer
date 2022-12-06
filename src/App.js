@@ -25,6 +25,10 @@ class App extends React.Component {
     favSongs: [],
   };
 
+  componentDidMount() {
+    document.title = 'Simple music player';
+  }
+
   onInputChange = ({ target }) => {
     const { name, value } = target;
     this.setState({
