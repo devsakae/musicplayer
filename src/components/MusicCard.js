@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import teste from 'prop-types';
 import Loading from './Loading';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import './MusicCard.css';
 
 export default class MusicCard extends Component {
   state = {
@@ -49,20 +50,17 @@ export default class MusicCard extends Component {
                   defaultChecked={ listaDeFavoritas.length > 0
                     && (listaDeFavoritas.some((e) => e.trackId === trackId)) }
                   onClick={ (ev) => { this.favTheSong(ev, objDaMusica); } }
-                  data-testid={ `checkbox-music-${trackId}` }
                 />
                 Favorita
               </label>
             </form>
           ) }
         <div className="songInfo">
-          <h3>
-            { trackName }
-          </h3>
+          <h3>{ trackName }</h3>
           { mostrArtista && objDaMusica.artistName }
         </div>
         <div className="songAudio">
-          <audio data-testid="audio-component" src={ previewUrl } controls>
+          <audio src={ previewUrl } controls>
             <track kind="captions" />
             O seu navegador não suporta o elemento
             { ' ' }

@@ -1,0 +1,12 @@
+.active {
+  border: 1px #ccc double;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(255, 228, 196, 0.35);
+}
+
+.userside {
+  min-width: 20vw;
+  position: absolute;
+  right: 0;
+}

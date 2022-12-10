@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import teste from 'prop-types';
-import Header from './Header';
 import Loading from './Loading';
 import { getUser, updateUser } from '../services/userAPI';
+import styles from './Profile.module.css';
 
 export default class ProfileEdit extends Component {
   state = {
@@ -41,6 +41,7 @@ export default class ProfileEdit extends Component {
   };
 
   atualizaDados = async (obj) => {
+    const { finishEdit } = this.props;
     this.setState({
       loading: true,
     });
@@ -48,82 +49,80 @@ export default class ProfileEdit extends Component {
     this.setState({
       loading: false,
     });
+    finishEdit(obj);
   };
 
   render() {
     const { loading, isSaveButtonDisabled, name, email, description, image } = this.state;
     return (
-      <div>
-        <Header />
-        <div data-testid="page-profile-edit">
-          { loading ? <Loading /> : (
-            <center>
-              <h2>
-                Bem vind@,
-                { ' ' }
-                { name }
-                .
-              </h2>
-              <form>
-                <input
-                  id="edit-input-name"
-                  name="name"
-                  type="text"
-                  data-testid="edit-input-name"
-                  placeholder={ name }
-                  value={ name }
-                  onChange={ this.onInputChange }
-                  required
-                />
-                <br />
-                <input
-                  id="edit-input-email"
-                  name="email"
-                  type="email"
-                  data-testid="edit-input-email"
-                  placeholder="Endereço de e-mail"
-                  value={ email }
-                  onChange={ this.onInputChange }
-                  required
-                />
-                <br />
-                <input
-                  id="edit-input-image"
-                  name="image"
-                  type="text"
-                  data-testid="edit-input-image"
-                  placeholder="URL para sua imagem"
-                  onChange={ this.onInputChange }
-                  value={ image }
-                  required
-                />
-                <br />
-                <input
-                  id="edit-input-description"
-                  type="text"
-                  name="description"
-                  placeholder="Algo sobre você, algo bonito."
-                  value={ description }
-                  onChange={ this.onInputChange }
-                  required
-                />
-                <br />
-                <button
-                  type="button"
-                  name="edit-button-save"
-                  data-testid="edit-button-save"
-                  disabled={ isSaveButtonDisabled }
-                  onClick={ () => this.atualizaDados({
-                    name, email, description, image }) }
-                >
-                  Salvar
-                </button>
-              </form>
-            </center>
+      <>
+      { loading && <Loading /> }
+      { !loading && (
+        <form className={styles.profileedit}>
+          <label htmlFor="edit-input-name">
+            Nome:
+            <input
+              id="edit-input-name"
+              name="name"
+              type="text"
+              placeholder={ name }
+              value={ name }
+              onChange={ this.onInputChange }
+              required
+            />
+          </label>
 
-          )}
-        </div>
-      </div>
+          <label htmlFor="edit-input-email">
+            E-mail:
+            <input
+              id="edit-input-email"
+              name="email"
+              type="email"
+              placeholder="Endereço de e-mail"
+              value={ email }
+              onChange={ this.onInputChange }
+              required
+            />
+          </label>
+
+          <label htmlFor="edit-input-image">
+            Imagem URL:
+            <input
+              id="edit-input-image"
+              name="image"
+              type="text"
+              placeholder="URL para sua imagem"
+              onChange={ this.onInputChange }
+              value={ image }
+              required
+            />
+          </label>
+
+          <label htmlFor="edit-input-description">
+            Descrição:
+            <input
+              id="edit-input-description"
+              type="text"
+              name="description"
+              placeholder="Algo sobre você, algo bonito."
+              value={ description }
+              onChange={ this.onInputChange }
+              required
+            />
+          </label>
+
+          <button
+            type="button"
+            name="edit-button-save"
+            disabled={ isSaveButtonDisabled }
+            onClick={ () => this.atualizaDados({
+              name, email, description, image }) }
+          >
+            Salvar
+          </button>
+        </form>
+      )}
+      </>
     );
   }
 }

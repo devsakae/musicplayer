@@ -60,7 +60,7 @@ h1 {
   justify-content: center;
 }
 
-.trybetunes {
+nav {
   align-items: center;
   background: rgb(47,79,79);
   background: linear-gradient(90deg, rgba(47,79,79,1) 0%, rgba(36,36,54,1) 35%, rgba(68,153,98,1) 100%);
@@ -69,21 +69,22 @@ h1 {
   height: 12vh;
   justify-content: space-between;
   padding: 20px;
+  letter-spacing: 1px;
 }
 
-.trybetunes ul {
+nav ul {
   display: flex;
   list-style-type: none;
 }
 
-.trybetunes li a {
+nav li a {
   color: white;
   display: inline;
   padding: 20px;
   text-decoration: none;
 }
 
-.trybetunes li:hover {
+nav li:hover {
   color: aquamarine;
   font-weight: bold;
 }
@@ -117,29 +118,6 @@ h1 {
   max-width: 100px;
 }
 
-.albuminfo {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin-right: 20px;
-  padding: 10px;
-  text-align: center;
-  width: 23%;
-}
-
-.container2 {
-  align-items: flex-start;
-  display: flex;
-  flex-wrap: row nowrap;
-  justify-content: flex-start;
-  margin: 0 auto;
-  width: 89%;
-}
-
-.container2 img {
-  max-width: 100px;
-}
-
 .albuns {
   display: flex;
   flex-flow: row wrap;
@@ -167,41 +145,4 @@ h1 {
 
 .left {
   text-align: left;
-}
-
-.songs {
-  align-items: center;
-  border-bottom: 1px grey solid;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-.songs form {
-  font-size: x-small;
-  max-width: 50px;
-}
-
-.songInfo {
-  display: flex;
-  flex-flow: column;
-  padding: 1px;
-  text-align: left;
-  width: 100%;
-}
-
-.songInfo h3 {
-  margin: 0;
-}
-
-.songInfo form {
-  margin-bottom: 15px;
-}
-
-.songAudio {
-  display: flex;
-}
-
-.fav {
-  width: 10%;
 }

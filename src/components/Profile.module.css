@@ -1,0 +1,29 @@
+.profilepage {
+  text-align: center;
+}
+
+.profilecards {
+  display: flex;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+.labels {
+  text-align: left;
+}
+
+.profileedit {
+  width: 100%;
+}
+
+.profileedit label {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profileedit input {
+  min-width: 60%;
+}

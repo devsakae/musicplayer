@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
+import './Header.css';
 
 export default class Header extends Component {
   state = {
@@ -25,37 +26,37 @@ export default class Header extends Component {
     const sayittrue = true;
     return (
       <header>
-        <div className="trybetunes">
+        <nav>
           <ul className="menu">
             <li>
-              <Link
+              <NavLink
+                activeClassName={'active'}
                 to="/search"
-                data-testid="link-to-search"
               >
-                🔍 Busca
-              </Link>
+                🔍  Busca
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
+                activeClassName="active"
                 to="/favorites"
-                data-testid="link-to-favorites"
               >
-                💖 Favoritos
-              </Link>
+                💖  Favoritos
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
+                activeClassName="active"
                 to="/profile"
-                data-testid="link-to-profile"
               >
-                👤 Meu perfil
-              </Link>
+                👤  Meu perfil
+              </NavLink>
             </li>
           </ul>
-          <span data-testid="header-user-name">
+          <div className="userside">
             { loading ? <Loading notext={ sayittrue } /> : nomelogado }
-          </span>
-        </div>
+          </div>
+        </nav>
       </header>
     );
   }

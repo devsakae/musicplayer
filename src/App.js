@@ -89,42 +89,40 @@ class App extends React.Component {
       searchString, searchResults, bF, lastSearch } = this.state;
     return (
       <BrowserRouter>
-        <HashRouter>
-          <Switch>
-            { loading && <Loading /> }
-            <Route exact path="/">
-              { liberado ? <Redirect to="/search" /> : <Login
-                { ...this.props }
-                username={ username }
-                onInputChange={ this.onInputChange }
-                isSaveButtonDisabled={ isSaveButtonDisabled }
-                onJoinButtonClick={ this.onJoinButtonClick }
-              />}
-            </Route>
-            <Route exact path="/search">
-              <Search
-                musicSearch={ this.musicSearch }
-                searchString={ searchString }
-                isSearchButtonDisabled={ isSearchButtonDisabled }
-                searchingFor={ this.searchingFor }
-                searchResults={ searchResults }
-                bF={ bF }
-                lastSearch={ lastSearch }
-              />
-            </Route>
-            <Route exact path="/album/:id" component={ Album } />
-            <Route exact path="/favorites">
-              <Favorites
-                favSongs={ favSongs }
-              />
-            </Route>
-            <Route exact path="/profile" component={ Profile } />
-            <Route exact path="/profile/edit">
-              <ProfileEdit />
-            </Route>
-            <Route path="*" component={ NotFound } />
-          </Switch>
-        </HashRouter>
+        <Switch>
+          { loading && <Loading /> }
+          <Route exact path="/">
+            { liberado ? <Redirect to="/search" /> : <Login
+              { ...this.props }
+              username={ username }
+              onInputChange={ this.onInputChange }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onJoinButtonClick={ this.onJoinButtonClick }
+            />}
+          </Route>
+          <Route exact path="/search">
+            <Search
+              musicSearch={ this.musicSearch }
+              searchString={ searchString }
+              isSearchButtonDisabled={ isSearchButtonDisabled }
+              searchingFor={ this.searchingFor }
+              searchResults={ searchResults }
+              bF={ bF }
+              lastSearch={ lastSearch }
+            />
+          </Route>
+          <Route exact path="/album/:id" component={ Album } />
+          <Route exact path="/favorites">
+            <Favorites
+              favSongs={ favSongs }
+            />
+          </Route>
+          <Route exact path="/profile" component={ Profile } />
+          <Route exact path="/profile/edit">
+            <ProfileEdit />
+          </Route>
+          <Route path="*" component={ NotFound } />
+        </Switch>
       </BrowserRouter>
     );
   }
