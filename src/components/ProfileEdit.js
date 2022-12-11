@@ -56,72 +56,72 @@ export default class ProfileEdit extends Component {
     const { loading, isSaveButtonDisabled, name, email, description, image } = this.state;
     return (
       <>
-      { loading && <Loading /> }
-      { !loading && (
-        <form className={styles.profileedit}>
-          <label htmlFor="edit-input-name">
-            Nome:
-            <input
-              id="edit-input-name"
-              name="name"
-              type="text"
-              placeholder={ name }
-              value={ name }
-              onChange={ this.onInputChange }
-              required
-            />
-          </label>
+        { loading && <Loading /> }
+        { !loading && (
+          <form className={ styles.profileedit }>
+            <label htmlFor="edit-input-name">
+              Nome:
+              <input
+                id="edit-input-name"
+                name="name"
+                type="text"
+                placeholder={ name }
+                value={ name }
+                onChange={ this.onInputChange }
+                required
+              />
+            </label>
 
-          <label htmlFor="edit-input-email">
-            E-mail:
-            <input
-              id="edit-input-email"
-              name="email"
-              type="email"
-              placeholder="Endereço de e-mail"
-              value={ email }
-              onChange={ this.onInputChange }
-              required
-            />
-          </label>
+            <label htmlFor="edit-input-email">
+              E-mail:
+              <input
+                id="edit-input-email"
+                name="email"
+                type="email"
+                placeholder="Endereço de e-mail"
+                value={ email }
+                onChange={ this.onInputChange }
+                required
+              />
+            </label>
 
-          <label htmlFor="edit-input-image">
-            Imagem URL:
-            <input
-              id="edit-input-image"
-              name="image"
-              type="text"
-              placeholder="URL para sua imagem"
-              onChange={ this.onInputChange }
-              value={ image }
-              required
-            />
-          </label>
+            <label htmlFor="edit-input-image">
+              Imagem URL:
+              <input
+                id="edit-input-image"
+                name="image"
+                type="text"
+                placeholder="URL para sua imagem"
+                onChange={ this.onInputChange }
+                value={ image }
+                required
+              />
+            </label>
 
-          <label htmlFor="edit-input-description">
-            Descrição:
-            <input
-              id="edit-input-description"
-              type="text"
-              name="description"
-              placeholder="Algo sobre você, algo bonito."
-              value={ description }
-              onChange={ this.onInputChange }
-              required
-            />
-          </label>
+            <label htmlFor="edit-input-description">
+              Descrição:
+              <input
+                id="edit-input-description"
+                type="text"
+                name="description"
+                placeholder="Algo sobre você, algo bonito."
+                value={ description }
+                onChange={ this.onInputChange }
+                required
+              />
+            </label>
 
-          <button
-            type="button"
-            name="edit-button-save"
-            disabled={ isSaveButtonDisabled }
-            onClick={ () => this.atualizaDados({
-              name, email, description, image }) }
-          >
-            Salvar
-          </button>
-        </form>
-      )}
+            <button
+              type="button"
+              name="edit-button-save"
+              disabled={ isSaveButtonDisabled }
+              onClick={ () => this.atualizaDados({
+                name, email, description, image }) }
+            >
+              Salvar
+            </button>
+          </form>
+        )}
       </>
     );
   }
