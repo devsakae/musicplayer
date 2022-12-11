@@ -15,20 +15,20 @@
 }
 
 .songAudio {
-  display: flex;
   align-items: center;
   border-style: none;
+  display: flex;
 }
 
 .songs {
   align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-  margin: 10px 0;
   background-color: rgba(255, 254, 250, 0.4);
   border-bottom: black 1px solid;
   border-bottom-left-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 0 20px;
 }
 
 .songs form {

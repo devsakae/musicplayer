@@ -30,7 +30,6 @@ export default class Header extends Component {
           <ul className="menu">
             <li>
               <NavLink
-                activeClassName={'active'}
                 to="/search"
               >
                 🔍  Busca
@@ -38,7 +37,6 @@ export default class Header extends Component {
             </li>
             <li>
               <NavLink
-                activeClassName="active"
                 to="/favorites"
               >
                 💖  Favoritos
@@ -46,7 +44,6 @@ export default class Header extends Component {
             </li>
             <li>
               <NavLink
-                activeClassName="active"
                 to="/profile"
               >
                 👤  Meu perfil

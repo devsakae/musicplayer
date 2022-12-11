@@ -4,7 +4,7 @@ import Loading from './Loading';
 import MusicCard from './MusicCard';
 import Header from './Header';
 import getMusics from '../services/musicsAPI';
-import './Album.css'
+import './Album.css';
 
 export default class Album extends Component {
   /* inicializa o state com o loading verdadeiro e soa (songs of album) em branco; */
@@ -39,7 +39,7 @@ export default class Album extends Component {
                   { soa[0].artistName }
                 </h1>
                 <img src={ soa[0].artworkUrl100 } alt={ soa[0].artistName } />
-                <h3 key={ soa[0].collectionId } >
+                <h3 key={ soa[0].collectionId }>
                   { soa[0].collectionName }
                 </h3>
               </div>

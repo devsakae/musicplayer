@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
-import { Card } from './Card';
+import Card from './Card';
 import Header from './Header';
 import styles from './Profile.module.css';
 import ProfileEdit from './ProfileEdit';
@@ -12,7 +11,6 @@ export default class Profile extends Component {
     loading: true,
     dadosDoUser: '',
     editarPerfil: false,
-    novosDados: '',
   };
 
   componentDidMount() {
@@ -28,45 +26,69 @@ export default class Profile extends Component {
 
   editarPerfilHandler = (event) => {
     event.preventDefault();
-    this.setState({ editarPerfil: true })
+    this.setState({ editarPerfil: true });
   };
 
   finishEdit = (obj) => {
     this.setState({
       loading: false,
       dadosDoUser: obj,
-      editarPerfil: false
+      editarPerfil: false,
     });
   };
 
   render() {
-    const { loading, dadosDoUser: { name, email, image, description }, editarPerfil } = this.state;
+    const { loading, dadosDoUser: { name, email, image, description },
+      editarPerfil } = this.state;
     return (
       <>
         <Header />
         {loading && <Loading />}
         {!loading && (
-          <div className={styles.profilepage}>
+          <div className={ styles.profilepage }>
             <h1>Meu perfil</h1>
-            <div className={styles.profilecards}>
+            <div className={ styles.profilecards }>
               <Card>
-                <img src={image} alt={name} />
-                <legend>Este é você,<strong> {name}</strong>?</legend>
+                <img src={ image } alt={ name } />
+                <legend>
+                  Este é você,
+                  <strong>
+                    {' '}
+                    {name}
+                  </strong>
+                  ?
+                </legend>
               </Card>
               <Card>
-                { editarPerfil ? <ProfileEdit finishEdit={this.finishEdit} /> : (
+                { editarPerfil ? <ProfileEdit finishEdit={ this.finishEdit } /> : (
                   <>
                     <button
                       type="button"
-                      onClick={this.editarPerfilHandler}
+                      onClick={ this.editarPerfilHandler }
                     >
                       Editar perfil
                     </button>
-                    <ul className={styles.profile}>
-                      <li>Nome: {name}</li>
-                      <li>E-mail: {email}</li>
-                      <li>Sobre você: {description}</li>
-                      <li>Imagem URL: {image}</li>
+                    <ul className={ styles.profile }>
+                      <li>
+                        Nome:
+                        {' '}
+                        {name}
+                      </li>
+                      <li>
+                        E-mail:
+                        {' '}
+                        {email}
+                      </li>
+                      <li>
+                        Sobre você:
+                        {' '}
+                        {description}
+                      </li>
+                      <li>
+                        Imagem URL:
+                        {' '}
+                        {image}
+                      </li>
                     </ul>
                   </>
                 )}
